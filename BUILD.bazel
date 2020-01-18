@@ -1,0 +1,17 @@
+load("@rules_proto_grpc//csharp:defs.bzl", "csharp_grpc_compile")
+
+proto_library(
+    name = "mypackage_proto",
+    srcs = ["mypackage.proto"],
+)
+
+proto_library(
+    name = "myservice_proto",
+    srcs = ["myservice.proto"],
+    deps = [":mypackage_proto"],
+)
+
+csharp_grpc_compile(
+    name = "myservice_grpc_csharp",
+    deps = [":myservice_proto"],
+)

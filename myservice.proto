@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package myservice;
+
+import "mypackage.proto";
+
+service MyService {
+    rpc DoIt(mypackage.MyRequest) returns (mypackage.MyResponse) {}
+}
